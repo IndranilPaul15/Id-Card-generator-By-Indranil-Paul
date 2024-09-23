@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .carousel {
+      position: relative;
+      width: 600px;
+      /* Set desired width */
+      margin: auto;
+      overflow: hidden;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .slide {
+      min-width: 100%;
+      box-sizing: border-box;
+      padding: 20px;
+      text-align: center;
+      background-color: #f0f0f0;
+      /* Set desired background */
+    }
+
+    .prev,
+    .next {
+      position: absolute;
+      top: 50%;
+      padding: 16px;
+      color: white;
+      font-weight: bold;
+      font-size: 24px;
+      cursor: pointer;
+      background-color: rgba(0, 0, 0, 0.5);
+      border: none;
+      transform: translateY(-50%);
+      user-select: none;
+    }
+
+    .prev {
+      left: 0;
+    }
+
+    .next {
+      right: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="carousel">
+    <div class="slides">
+      <!-- Existing slides -->
+      <div class="slide">Slide 1 content</div>
+      <div class="slide">Slide 2 content</div>
+      <div class="slide">Slide 3 content</div>
+      <div class="slide ">
+        <div class="card">
+          <div class="tri2"></div>
+          <div class="up">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="heading">IDENTITY CARD</div>
+          </div>
+          <div class="main">
+            <div class="photo">
+              <div class="picture">
+                <img src="iprofessor.png" alt="photo">
+              </div>
+              <span id="name">Indraneel Paul</span>
+              <span id="designation">Computer Science</span>
+            </div>
+            <div class="line"></div>
+            <div class="details">
+              <div class="label">
+                <span>D.O.B &emsp;&ensp;:</span>
+                <span>Email &emsp;&ensp;&nbsp;:</span>
+                <span>Phone &emsp;&ensp;&nbsp;:</span>
+                <span>Address &emsp;: <br> <br> </span>
+              </div>
+              <div class="txt">
+                <span>15/10/2004</span>
+                <span>your mail goes here</span>
+                <span>1234567890</span>
+                <span>Lorem ipsum, dolor sit amet consectetur </span>
+              </div>
+            </div>
+          </div>
+          <div class="down">
+            <div class="bar3"></div>
+            <div class="bar4"></div>
+          </div>
+        </div>
+
+        <div class="triangle"></div>
+      </div>
+      <!-- New slides will be added here -->
+    </div>
+    <button class="prev">&#10094;</button>
+    <button class="next">&#10095;</button>
+  </div>
+
+</body>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const slidesContainer = document.querySelector('.slides');
+    const prev = document.querySelector('.prev');
+    const next = document.querySelector('.next');
+    let current = 0;
+
+    function showSlide(index) {
+      slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    prev.addEventListener('click', () => {
+      current = (current > 0) ? current - 1 : slidesContainer.children.length - 1;
+      showSlide(current);
+    });
+
+    next.addEventListener('click', () => {
+      current = (current < slidesContainer.children.length - 1) ? current + 1 : 0;
+      showSlide(current);
+    });
+
+    // Function to add a new slide
+    function addSlide(content) {
+      const newSlide = document.createElement('div');
+      newSlide.classList.add('slide');
+      newSlide.textContent = content;
+      slidesContainer.appendChild(newSlide);
+    }
+  });
+
+</script>
+
+</html>
