@@ -219,7 +219,9 @@
     width: 130px;
     height: 0;
 }
-
+footer{
+    text-align: center;
+}
 .entrybox {
     border: 2px solid blue;
     width: fit-content;
